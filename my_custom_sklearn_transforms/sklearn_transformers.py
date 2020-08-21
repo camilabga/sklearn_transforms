@@ -44,27 +44,4 @@ class FeatureEngineering(BaseEstimator, TransformerMixin):
         df['MEDIA_H'] = (df['NOTA_DE']+df['NOTA_EM'])/2
         df['MEDIA_E'] = (df['NOTA_MF']+df['NOTA_GO'])/2
 
-        data_new = []
-        for num, name in enumerate(df['NOTA_GO'], start=0): 
-            data_new.append(1 if df['NOTA_GO'][num]!=0 else 0)
-        df['APROVADO_GO'] = data_new
-
-        data_new =[]
-
-        for num, name in enumerate(df['NOTA_MF'], start=0): 
-            data_new.append(1 if (df['NOTA_MF'][num]!=0)  else 0)
-        df['APROVADO_MF'] = data_new
-
-        data_new =[]
-
-        for num, name in enumerate(df['NOTA_EM'], start=0): 
-            data_new.append(1 if (df['NOTA_EM'][num]!=0)  else 0)
-        df['APROVADO_EM'] = data_new
-
-        data_new =[]
-
-        for num, name in enumerate(df['NOTA_DE'], start=0): 
-            data_new.append(1 if (df['NOTA_DE'][num]!=0) else 0)
-        df['APROVADO_DE'] = data_new
-
         return df
