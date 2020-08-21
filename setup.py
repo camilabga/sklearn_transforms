@@ -1,5 +1,5 @@
 from setuptools import setup
-imoprt numpy as np
+import numpy as np
 
 
 setup(
