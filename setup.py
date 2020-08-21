@@ -1,4 +1,5 @@
 from setuptools import setup
+imoprt numpy as np
 
 
 setup(
