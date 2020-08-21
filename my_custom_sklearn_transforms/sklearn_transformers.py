@@ -20,7 +20,7 @@ class AdjustMeanSubject(BaseEstimator, TransformerMixin):
         pass
 
     def fit(self, X, y=None):
-        return selfS
+        return self
 
     def transform(self, X):
         data = X.copy()
