@@ -45,7 +45,8 @@ class FillNa(BaseEstimator, TransformerMixin):
        'koi_steff_err1', 'koi_steff_err2', 'koi_slogg', 'koi_slogg_err1',
        'koi_slogg_err2', 'koi_srad', 'koi_srad_err1', 'koi_srad_err2', 'ra',
        'dec', 'koi_kepmag']
-data0[cols]=data0[cols].fillna(data0.mean().iloc[0])
+        
+        data0[cols]=data0[cols].fillna(data0.mean().iloc[0])
         
         return data0
     
