@@ -51,4 +51,16 @@ class FillNa(BaseEstimator, TransformerMixin):
         
         return data0
     
-    
+class CathegoricalData(BaseEstimator, TransformerMixin):
+    def __init__(self):
+        pass
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        data = X.copy()
+        
+        data = pd.get_dummies(data, columns=['koi_pdisposition'])
+        
+        return data
