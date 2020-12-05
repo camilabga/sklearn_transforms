@@ -17,15 +17,8 @@ class DropColumns(BaseEstimator, TransformerMixin):
 
         data = data.drop(labels=self.columns, axis='columns')
 
-        target0 = data[data['TARGET']==0]
-        target1 = data[data['TARGET']==1]
-        target2 = data[data['TARGET']==2]
-        target0['koi_pdisposition']=target0['koi_pdisposition'].fillna('CANDIDATE')
-        target1['koi_pdisposition']=target1['koi_pdisposition'].fillna('FALSE POSITIVE')
-        target2['koi_pdisposition']=target2['koi_pdisposition'].fillna('CANDIDATE')
-        
-        data0 = pd.concat([target0, target1, target2])
-        
+        data['koi_pdisposition'] = data['koi_pdisposition'].dropna()
+                
         cols = ['koi_score', 'koi_fpflag_nt', 'koi_fpflag_ss',
        'koi_fpflag_co', 'koi_fpflag_ec', 'koi_period', 'koi_period_err1',
        'koi_period_err2', 'koi_time0bk', 'koi_time0bk_err1',
@@ -38,12 +31,12 @@ class DropColumns(BaseEstimator, TransformerMixin):
        'koi_slogg_err2', 'koi_srad', 'koi_srad_err1', 'koi_srad_err2', 'ra',
        'dec', 'koi_kepmag']
         
-        data0[cols]=data0[cols].fillna(data0.mean().iloc[0])
+        data[cols]=data[cols].fillna(data.mean().iloc[0])
 
-        data = pd.get_dummies(data0, columns=['koi_pdisposition'])
+        data = pd.get_dummies(data, columns=['koi_pdisposition'])
 
         return data
-    
+
     
 class FillNa(BaseEstimator, TransformerMixin):
     def __init__(self):
