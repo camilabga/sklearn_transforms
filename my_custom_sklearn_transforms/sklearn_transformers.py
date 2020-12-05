@@ -64,3 +64,4 @@ class CathegoricalData(BaseEstimator, TransformerMixin):
         data = pd.get_dummies(data, columns=['koi_pdisposition'])
         
         return data
+        
